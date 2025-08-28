@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+┌─────────────┐        ┌───────────────┐        ┌─────────────────────┐
+│   user      │ 1    n │   booking      │ n    n │   barberShopService │
+│─────────────│--------│───────────────│--------│─────────────────────│
+│ id (PK)     │        │ id (PK)       │        │ id (PK)             │
+│ name        │        │ userId (FK)   │        │ name                │
+│ email       │        │ reservedDate  │        │ priceInCents        │
+└─────────────┘        └───────────────┘        │ barberShopId (FK)   │
+                                                 └─────────────────────┘
+                                                         │
+                                                         │ n
+                                                         │
+                                                         │ 1
+                                                 ┌──────────────┐
+                                                 │  barberShop  │
+                                                 │──────────────│
+                                                 │ id (PK)      │
+                                                 │ name         │
+                                                 │ address      │
+                                                 └──────────────┘
 
-## Getting Started
+🔗 Relações:
 
-First, run the development server:
+User (1) → (N) Booking
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Booking (N) → (N) BarberShopService (via tabela pivot booking_services)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+BarberShop (1) → (N) BarberShopService
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```mermaid
+erDiagram
+    User ||--o{ Booking : "faz"
+    Booking ||--o{ BookingServices : "possui"
+    BarberShopService ||--o{ BookingServices : "é reservado em"
+    BarberShop ||--o{ BarberShopService : "oferece"
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+    User {
+        uuid id PK
+        text name
+        text email
+        timestamp createdAt
+        timestamp updatedAt
+    }
 
-## Learn More
+    Booking {
+        uuid id PK
+        uuid userId FK
+        timestamp reservedDate
+        timestamp createdAt
+        timestamp updatedAt
+    }
 
-To learn more about Next.js, take a look at the following resources:
+    BookingServices {
+        uuid bookingId FK
+        uuid serviceId FK
+        PK (bookingId, serviceId)
+    }
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    BarberShopService {
+        uuid id PK
+        text name
+        text description
+        text imageUrl
+        int priceInCents
+        uuid barberShopId FK
+        timestamp createdAt
+        timestamp updatedAt
+    }
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    BarberShop {
+        uuid id PK
+        text name
+        text address
+        text phone
+        text description
+        text imageUrl
+        timestamp createdAt
+        timestamp updatedAt
+    }
