@@ -1,37 +1,8 @@
-┌─────────────┐        ┌───────────────┐        ┌─────────────────────┐
-│   user      │ 1    n │   booking      │ n    n │   barberShopService │
-│─────────────│--------│───────────────│--------│─────────────────────│
-│ id (PK)     │        │ id (PK)       │        │ id (PK)             │
-│ name        │        │ userId (FK)   │        │ name                │
-│ email       │        │ reservedDate  │        │ priceInCents        │
-└─────────────┘        └───────────────┘        │ barberShopId (FK)   │
-                                                 └─────────────────────┘
-                                                         │
-                                                         │ n
-                                                         │
-                                                         │ 1
-                                                 ┌──────────────┐
-                                                 │  barberShop  │
-                                                 │──────────────│
-                                                 │ id (PK)      │
-                                                 │ name         │
-                                                 │ address      │
-                                                 └──────────────┘
-
-🔗 Relações:
-
-User (1) → (N) Booking
-
-Booking (N) → (N) BarberShopService (via tabela pivot booking_services)
-
-BarberShop (1) → (N) BarberShopService
-
-```mermaid
 erDiagram
-    User ||--o{ Booking : "faz"
-    Booking ||--o{ BookingServices : "possui"
-    BarberShopService ||--o{ BookingServices : "é reservado em"
-    BarberShop ||--o{ BarberShopService : "oferece"
+User ||--o{ Booking : "faz"
+Booking ||--o{ BookingServices : "possui"
+BarberShopService ||--o{ BookingServices : "é reservado em"
+BarberShop ||--o{ BarberShopService : "oferece"
 
     User {
         uuid id PK
