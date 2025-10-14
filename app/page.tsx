@@ -1,4 +1,4 @@
-import { SearchIcon } from "lucide-react";
+import { SearchIcon, Scissors } from "lucide-react";
 import Header from "./_components/header";
 import { Button } from "./_components/ui/button";
 import { Input } from "./_components/ui/input";
@@ -82,6 +82,29 @@ const Home = async () => {
           <Input placeholder="Faça sua busca" />
           <Button>
             <SearchIcon />
+          </Button>
+        </div>
+
+        <div className="flex gap-3 mt-6 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+          <Button className="gap-2" variant="secondary">
+            <Scissors></Scissors>
+            Cabelo
+          </Button>
+          <Button className="gap-2" variant="secondary">
+            <Scissors></Scissors>
+            Barba
+          </Button>
+          <Button className="gap-2" variant="secondary">
+            <Scissors></Scissors>
+            Sobrancelha
+          </Button>
+          <Button className="gap-2" variant="secondary">
+            <Scissors></Scissors>
+            Unha
+          </Button>
+          <Button className="gap-2" variant="secondary">
+            <Scissors></Scissors>
+            Massagem
           </Button>
         </div>
 
