@@ -69,6 +69,8 @@ const Home = async () => {
     },
   ];
 
+  const popularBarberShops = barberShops;
+
   return (
     <div>
       <Header />
@@ -118,10 +120,30 @@ const Home = async () => {
           {barberShops.map(barbershop => (
             <BarberShopItem key={barbershop.id} barbershop={barbershop}
             />
-          ))}       
-            
+          ))}
+
+        </div>
+
+        <h2 className="text-xs font-bold uppercase text-gray-400 mt-6 mb-3">Populares</h2>
+        <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
+
+          {popularBarberShops.map(barbershop => (
+            <BarberShopItem key={barbershop.id} barbershop={barbershop}
+            />
+          ))}
+
         </div>
       </div>
+
+      <footer>
+        <Card className="px-5 py-6">
+          <CardContent>
+            <p className="text-xs font-semibold text-gray-400">
+              © 2025 Copyright <span className="font-bold">Beeps</span>
+            </p>
+          </CardContent>
+        </Card>
+      </footer>
     </div >
   );
 }
