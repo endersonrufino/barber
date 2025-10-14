@@ -1,13 +1,37 @@
-import { SearchIcon, Scissors } from "lucide-react";
+import { SearchIcon } from "lucide-react";
 import Header from "./_components/header";
 import { Button } from "./_components/ui/button";
 import { Input } from "./_components/ui/input";
 import Image from "next/image";
 import { Card, CardContent } from "./_components/ui/card";
-import { Badge } from "./_components/ui/badge";
-import { Avatar, AvatarImage } from "./_components/ui/avatar";
 import BarberShopItem from "./_components/barbershop-item";
 import { Barbershop } from "@/src/types/Barbershop";
+import BookingItem from "./_components/booking-item";
+
+interface QuickSearchOption {
+  title: string
+}
+
+const quickSearchOptions: QuickSearchOption[] = [
+  {
+    title: "Cabelo"
+  },
+  {
+    title: "Barba"
+  },
+  {
+    title: "Sobrancelha"
+  },
+  {
+    title: "Manicure"
+  },
+  {
+    title: "Pintura"
+  },
+  {
+    title: "Depilação"
+  },
+]
 
 const Home = async () => {
   const barberShops: Barbershop[] = [
@@ -86,26 +110,15 @@ const Home = async () => {
         </div>
 
         <div className="flex gap-3 mt-6 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
-          <Button className="gap-2" variant="secondary">
-            <Scissors></Scissors>
-            Cabelo
-          </Button>
-          <Button className="gap-2" variant="secondary">
-            <Scissors></Scissors>
-            Barba
-          </Button>
-          <Button className="gap-2" variant="secondary">
-            <Scissors></Scissors>
-            Sobrancelha
-          </Button>
-          <Button className="gap-2" variant="secondary">
-            <Scissors></Scissors>
-            Unha
-          </Button>
-          <Button className="gap-2" variant="secondary">
-            <Scissors></Scissors>
-            Massagem
-          </Button>
+          {quickSearchOptions.map(quickSearchOption => (
+            <Button
+              key={quickSearchOption.title}
+              className="gap-2"
+              variant="secondary"
+            >
+              {quickSearchOption.title}
+            </Button>
+          ))}
         </div>
 
         <div className="relative w-full h-[150px] mt-6">
@@ -113,29 +126,7 @@ const Home = async () => {
           <Image alt="banner" src="banner.svg" fill className="object-cover rounded-2xl" />
         </div>
 
-        <h2 className="text-xs font-bold uppercase text-gray-400 mt-6 mb-3">AGENDAMENTOS</h2>
-
-        <Card>
-          <CardContent className="flex justify-between p-0">
-            <div className="flex flex-col gap-2 py-5 pl-5">
-              <Badge className="w-fit">Confirmado</Badge>
-              <h3 className="font-semibold">Corte de cabelo</h3>
-
-              <div className="flex items-center gap-2">
-                <Avatar className="h-[6] w-[6]">
-                  <AvatarImage src="https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg" />
-                </Avatar>
-                <p className="text-sm">Barbearia do ZÉ</p>
-              </div>
-            </div>
-
-            <div className="flex flex-col items-center justify-center px-5 border-l-2 border-solid">
-              <p className="text-sm">Setembro</p>
-              <p className="text-2xl">18</p>
-              <p className="text-sm">14:00</p>
-            </div>
-          </CardContent>
-        </Card>
+        <BookingItem />
 
         <h2 className="text-xs font-bold uppercase text-gray-400 mt-6 mb-3">Recomendados</h2>
         <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
