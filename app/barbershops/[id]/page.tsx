@@ -3,6 +3,8 @@ import { Barbershop } from "@/src/types/Barbershop";
 import { Button } from "@/app/_components/ui/button";
 import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react";
 import Link from "next/link";
+import BarberShopItem from "@/app/_components/barbershop-item";
+import ServiceItem from "@/app/_components/service-item";
 
 interface BarbershopPageProps {
     params: {
@@ -19,7 +21,36 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
                 "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/9e/13/b6/barbershop-main-entrance.jpg?w=1000&h=-1&s=1",
             address: "Rua das Flores, 123",
             rating: 4.8,
-            description: "nossa barearia e top"
+            description: "nossa barearia e top",
+            services: [
+                {
+                    id: "1",
+                    name: "Corte Masculino",
+                    description: "Corte de cabelo masculino",
+                    priceInCents: 3000,
+                    imageUrl:
+                        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/9e/13/b6/barbershop-main-entrance.jpg?w=1000&h=-1&s=1",
+                    barberShopId: "1"
+                },
+                {
+                    id: "2",
+                    name: "Barba",
+                    description: "Aparar e modelar barba",
+                    priceInCents: 2000,
+                    imageUrl:
+                        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/9e/13/b6/barbershop-main-entrance.jpg?w=1000&h=-1&s=1",
+                    barberShopId: "1",
+                },
+                {
+                    id: "3",
+                    name: "Corte + Barba",
+                    description: "Pacote corte + barba",
+                    priceInCents: 4500,
+                    imageUrl:
+                        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/9e/13/b6/barbershop-main-entrance.jpg?w=1000&h=-1&s=1",
+                    barberShopId: "1",
+                },
+            ]
         },
         {
             id: "2",
@@ -28,7 +59,36 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
                 "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/9e/13/b6/barbershop-main-entrance.jpg?w=1000&h=-1&s=1",
             address: "Av. Paulista, 456",
             rating: 4.6,
-            description: "nossa barbearia é a melhor"
+            description: "nossa barbearia é a melhor",
+            services: [
+                {
+                    id: "1",
+                    name: "Corte Masculino",
+                    description: "Corte de cabelo masculino",
+                    priceInCents: 3000,
+                    imageUrl:
+                        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/9e/13/b6/barbershop-main-entrance.jpg?w=1000&h=-1&s=1",
+                    barberShopId: "2"
+                },
+                {
+                    id: "2",
+                    name: "Barba",
+                    description: "Aparar e modelar barba",
+                    priceInCents: 2000,
+                    imageUrl:
+                        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/9e/13/b6/barbershop-main-entrance.jpg?w=1000&h=-1&s=1",
+                    barberShopId: "2",
+                },
+                {
+                    id: "3",
+                    name: "Corte + Barba",
+                    description: "Pacote corte + barba",
+                    priceInCents: 4500,
+                    imageUrl:
+                        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/9e/13/b6/barbershop-main-entrance.jpg?w=1000&h=-1&s=1",
+                    barberShopId: "2",
+                },
+            ]
         },
     ];
 
@@ -71,11 +131,11 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
 
             <div className="p-5 border-b border-solid">
                 <h1 className="text-xl font-bold mb-3">{barbershop.name}</h1>
-                <div className="flex items-center gap-1 mb-2">
+                <div className="flex items-center gap-2 mb-2">
                     <MapPinIcon className="text-primary" size={18} />
                     <p className="text-gray-600">{barbershop.address}</p>
                 </div>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-2">
                     <StarIcon className="fill-primary text-primary" size={18} />
                     <p className="text-gray-600">5,0 (499 avaliações)</p>
                 </div>
@@ -84,6 +144,15 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
             <div className="p-5 border-b border-solid space-y-3">
                 <h2 className="text-xs text-gray-400 uppercase font-bold">Sobre Nós</h2>
                 <p>{barbershop.description}</p>
+            </div>
+
+            <div className="p-5 space-y-3">
+                <h2 className="text-xs text-gray-400 uppercase font-bold">Serviços</h2>
+                <div className="space-y-3">
+                    {barbershop.services.map((service) => (
+                        <ServiceItem key={service.id} service={service}></ServiceItem>
+                    ))}
+                </div>
             </div>
         </div >
     );

@@ -1,3 +1,5 @@
+import { BarbershopService } from "./BarbershopService";
+
 export interface Barbershop {
   id: string;
   name: string;
@@ -5,4 +7,5 @@ export interface Barbershop {
   address: string;
   rating: number;
   description: string;
+  services: Array<BarbershopService>
 }
