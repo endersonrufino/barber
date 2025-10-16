@@ -8,4 +8,5 @@ export interface Barbershop {
   rating: number;
   description: string;
   services: Array<BarbershopService>
+  phones: Array<string>
 }

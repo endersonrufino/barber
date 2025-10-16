@@ -3,8 +3,8 @@ import { Barbershop } from "@/src/types/Barbershop";
 import { Button } from "@/app/_components/ui/button";
 import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react";
 import Link from "next/link";
-import BarberShopItem from "@/app/_components/barbershop-item";
 import ServiceItem from "@/app/_components/service-item";
+import PhoneItem from "@/app/_components/phone-item";
 
 interface BarbershopPageProps {
     params: {
@@ -22,6 +22,7 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
             address: "Rua das Flores, 123",
             rating: 4.8,
             description: "nossa barearia e top",
+            phones: ["11964578930", "119647898023"],
             services: [
                 {
                     id: "1",
@@ -60,6 +61,7 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
             address: "Av. Paulista, 456",
             rating: 4.6,
             description: "nossa barbearia é a melhor",
+            phones: ["11912347867", "11975374900"],
             services: [
                 {
                     id: "1",
@@ -146,7 +148,7 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
                 <p>{barbershop.description}</p>
             </div>
 
-            <div className="p-5 space-y-3">
+            <div className="p-5 space-y-3 border-b border-solid">
                 <h2 className="text-xs text-gray-400 uppercase font-bold">Serviços</h2>
                 <div className="space-y-3">
                     {barbershop.services.map((service) => (
@@ -154,7 +156,15 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
                     ))}
                 </div>
             </div>
-        </div >
+
+            <div className="p-5 space-y-3">
+                <h2 className="text-xs text-gray-400 uppercase font-bold">Contatos</h2>
+
+                {barbershop.phones.map((phone) => (
+                   <PhoneItem key={phone} phone={phone} />
+                ))}
+            </div>
+        </div>
     );
 };
 

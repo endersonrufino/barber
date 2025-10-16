@@ -41,6 +41,9 @@ const Home = async () => {
       imageUrl: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/9e/13/b6/barbershop-main-entrance.jpg?w=1000&h=-1&s=1",
       address: "Rua das Flores, 123",
       rating: 4.8,
+      description: "",
+      services: [],
+      phones: []
     },
     {
       id: "2",
@@ -48,6 +51,9 @@ const Home = async () => {
       imageUrl: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/9e/13/b6/barbershop-main-entrance.jpg?w=1000&h=-1&s=1",
       address: "Av. Paulista, 456",
       rating: 4.6,
+      description: "",
+      services: [],
+      phones: []
     },
     {
       id: "3",
@@ -55,6 +61,9 @@ const Home = async () => {
       imageUrl: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/9e/13/b6/barbershop-main-entrance.jpg?w=1000&h=-1&s=1",
       address: "Av. Paulista, 456",
       rating: 4.6,
+      description: "",
+      services: [],
+      phones: []
     },
     {
       id: "4",
@@ -62,6 +71,9 @@ const Home = async () => {
       imageUrl: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/9e/13/b6/barbershop-main-entrance.jpg?w=1000&h=-1&s=1",
       address: "Av. Paulista, 456",
       rating: 4.6,
+      description: "",
+      services: [],
+      phones: []
     },
     {
       id: "5",
@@ -69,6 +81,9 @@ const Home = async () => {
       imageUrl: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/9e/13/b6/barbershop-main-entrance.jpg?w=1000&h=-1&s=1",
       address: "Av. Paulista, 456",
       rating: 4.6,
+      description: "",
+      services: [],
+      phones: []
     },
     {
       id: "6",
@@ -76,6 +91,9 @@ const Home = async () => {
       imageUrl: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/9e/13/b6/barbershop-main-entrance.jpg?w=1000&h=-1&s=1",
       address: "Av. Paulista, 456",
       rating: 4.6,
+      description: "",
+      services: [],
+      phones: []
     },
     {
       id: "7",
@@ -83,6 +101,9 @@ const Home = async () => {
       imageUrl: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/9e/13/b6/barbershop-main-entrance.jpg?w=1000&h=-1&s=1",
       address: "Av. Paulista, 456",
       rating: 4.6,
+      description: "",
+      services: [],
+      phones: []
     },
     {
       id: "8",
@@ -90,6 +111,9 @@ const Home = async () => {
       imageUrl: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/9e/13/b6/barbershop-main-entrance.jpg?w=1000&h=-1&s=1",
       address: "Av. Paulista, 456",
       rating: 4.6,
+      description: "",
+      services: [],
+      phones: []
     },
   ];
 
@@ -148,16 +172,6 @@ const Home = async () => {
 
         </div>
       </div>
-
-      <footer>
-        <Card className="px-5 py-6">
-          <CardContent>
-            <p className="text-xs font-semibold text-gray-400">
-              © 2025 Copyright <span className="font-bold">Beeps</span>
-            </p>
-          </CardContent>
-        </Card>
-      </footer>
     </div >
   );
 }
