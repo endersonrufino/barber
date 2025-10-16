@@ -4,4 +4,5 @@ export interface Barbershop {
   imageUrl: string;
   address: string;
   rating: number;
+  description: string;
 }
