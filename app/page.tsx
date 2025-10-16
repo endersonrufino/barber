@@ -146,7 +146,6 @@ const Home = async () => {
         </div>
 
         <div className="relative w-full h-[150px] mt-6">
-
           <Image alt="banner" src="banner.svg" fill className="object-cover rounded-2xl" />
         </div>
 
